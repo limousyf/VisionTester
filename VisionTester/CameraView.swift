@@ -1,6 +1,6 @@
 //
 //  CameraView.swift
-//  BarcodeScanner
+//  VisionTester
 //
 
 import SwiftUI

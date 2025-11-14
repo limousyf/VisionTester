@@ -1,6 +1,6 @@
 //
 //  BarcodeItem.swift
-//  BarcodeScanner
+//  VisionTester
 //
 
 import Foundation
