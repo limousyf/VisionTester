@@ -13,4 +13,7 @@
    <FileRef
       location = "group:BarcodeScannerBarcodeScannerApp.swift">
    </FileRef>
+   <FileRef
+      location = "group:Info.plist">
+   </FileRef>
 </Workspace>

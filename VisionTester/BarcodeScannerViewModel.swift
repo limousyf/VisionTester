@@ -22,25 +22,41 @@ class BarcodeScannerViewModel: NSObject, ObservableObject {
     // MARK: - Camera Setup
     
     func setupCamera() -> AVCaptureSession? {
+        print("📷 Setting up camera...")
+        
+        // Return existing session if already set up
+        if let existingSession = captureSession {
+            print("📷 Returning existing camera session")
+            return existingSession
+        }
+        
         let session = AVCaptureSession()
+        session.sessionPreset = .high
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+            print("❌ Unable to access camera device")
             errorMessage = "Unable to access camera"
             return nil
         }
+        
+        print("📷 Camera device found: \(videoCaptureDevice.localizedName)")
         
         let videoInput: AVCaptureDeviceInput
         
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+            print("📷 Video input created successfully")
         } catch {
+            print("❌ Unable to initialize camera: \(error.localizedDescription)")
             errorMessage = "Unable to initialize camera: \(error.localizedDescription)"
             return nil
         }
         
         if session.canAddInput(videoInput) {
             session.addInput(videoInput)
+            print("📷 Video input added to session")
         } else {
+            print("❌ Could not add video input to session")
             errorMessage = "Could not add video input to session"
             return nil
         }
@@ -49,24 +65,56 @@ class BarcodeScannerViewModel: NSObject, ObservableObject {
         
         if session.canAddOutput(videoOutput) {
             session.addOutput(videoOutput)
+            print("📷 Video output added to session")
         } else {
+            print("❌ Could not add video output to session")
             errorMessage = "Could not add video output to session"
             return nil
         }
         
         captureSession = session
+        print("✅ Camera setup complete")
         return session
     }
     
+    func requestCameraPermission(completion: @escaping (Bool) -> Void) {
+        let status = AVCaptureDevice.authorizationStatus(for: .video)
+        print("📷 Camera authorization status: \(status.rawValue)")
+        
+        switch status {
+        case .authorized:
+            print("📷 Camera already authorized")
+            completion(true)
+        case .notDetermined:
+            print("📷 Requesting camera permission...")
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    print("📷 Camera permission granted: \(granted)")
+                    completion(granted)
+                }
+            }
+        case .denied, .restricted:
+            print("📷 Camera access denied or restricted")
+            completion(false)
+        @unknown default:
+            print("📷 Unknown camera authorization status")
+            completion(false)
+        }
+    }
+    
     func startScanning() {
+        print("📷 Starting camera scanning...")
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.captureSession?.startRunning()
+            print("📷 Camera session started running")
         }
     }
     
     func stopScanning() {
+        print("📷 Stopping camera scanning...")
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.captureSession?.stopRunning()
+            print("📷 Camera session stopped")
         }
     }
     
@@ -135,7 +183,14 @@ class BarcodeScannerViewModel: NSObject, ObservableObject {
     }
     
     func openCamera() {
-        showingCamera = true
+        requestCameraPermission { [weak self] granted in
+            guard let self = self else { return }
+            if granted {
+                self.showingCamera = true
+            } else {
+                self.errorMessage = "Camera access denied. Please enable camera access in Settings."
+            }
+        }
     }
     
     func openPhotoPicker() {

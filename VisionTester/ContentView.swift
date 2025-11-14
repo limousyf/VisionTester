@@ -79,8 +79,21 @@ struct ContentView: View {
                     .padding(.bottom, 40)
                 }
             } else {
-                Text("Unable to access camera")
-                    .foregroundStyle(.secondary)
+                VStack(spacing: 20) {
+                    Image(systemName: "camera.fill")
+                        .font(.system(size: 60))
+                        .foregroundStyle(.secondary)
+                    Text("Unable to access camera")
+                        .foregroundStyle(.secondary)
+                    
+                    Button("Close") {
+                        viewModel.showingCamera = false
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundStyle(.white)
+                    .clipShape(Capsule())
+                }
             }
         }
     }
