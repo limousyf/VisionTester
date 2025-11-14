@@ -1,0 +1,15 @@
+//
+//  BarcodeScannerApp.swift
+//  BarcodeScanner
+//
+
+import SwiftUI
+
+@main
+struct BarcodeScannerApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}

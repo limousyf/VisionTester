@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		158002C42EC6B8100068FFC8 /* BarcodeScannerBarcodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158002C32EC6B8100068FFC8 /* BarcodeScannerBarcodeItem.swift */; };
+		158002C62EC6B8220068FFC8 /* BarcodeScannerBarcodeScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158002C52EC6B8220068FFC8 /* BarcodeScannerBarcodeScannerViewModel.swift */; };
+		158002C82EC6B8280068FFC8 /* BarcodeScannerCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158002C72EC6B8280068FFC8 /* BarcodeScannerCameraView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1571BDF22EC661C700B179B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +33,9 @@
 		1571BDE32EC661C600B179B5 /* VisionTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1571BDF12EC661C700B179B5 /* VisionTesterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionTesterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1571BDFB2EC661C700B179B5 /* VisionTesterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionTesterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		158002C32EC6B8100068FFC8 /* BarcodeScannerBarcodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerBarcodeItem.swift; sourceTree = "<group>"; };
+		158002C52EC6B8220068FFC8 /* BarcodeScannerBarcodeScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerBarcodeScannerViewModel.swift; sourceTree = "<group>"; };
+		158002C72EC6B8280068FFC8 /* BarcodeScannerCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerCameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -79,6 +88,9 @@
 				1571BDF42EC661C700B179B5 /* VisionTesterTests */,
 				1571BDFE2EC661C700B179B5 /* VisionTesterUITests */,
 				1571BDE42EC661C600B179B5 /* Products */,
+				158002C32EC6B8100068FFC8 /* BarcodeScannerBarcodeItem.swift */,
+				158002C52EC6B8220068FFC8 /* BarcodeScannerBarcodeScannerViewModel.swift */,
+				158002C72EC6B8280068FFC8 /* BarcodeScannerCameraView.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158002C42EC6B8100068FFC8 /* BarcodeScannerBarcodeItem.swift in Sources */,
+				158002C82EC6B8280068FFC8 /* BarcodeScannerCameraView.swift in Sources */,
+				158002C62EC6B8220068FFC8 /* BarcodeScannerBarcodeScannerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

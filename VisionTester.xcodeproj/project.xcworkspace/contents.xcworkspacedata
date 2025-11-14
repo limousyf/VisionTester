@@ -4,4 +4,13 @@
    <FileRef
       location = "self:">
    </FileRef>
+   <FileRef
+      location = "group:BarcodeScannerPhotoPicker.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BarcodeScannerContentView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BarcodeScannerBarcodeScannerApp.swift">
+   </FileRef>
 </Workspace>
